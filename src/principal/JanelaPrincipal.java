@@ -4,6 +4,7 @@
  */
 package principal;
 
+import java.lang.constant.Constable;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
  */
 public class JanelaPrincipal extends javax.swing.JFrame {
     private char senha;
+    private String user = "usuario", key = "123456";
     /**
      * Creates new form JanelaPrincipal
      */
@@ -150,9 +152,19 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void login(){
-        JOptionPane.showMessageDialog(this, "Nome: " + jTextField1.getText()
-            + "\nSenha: " + new String(jPasswordField1.getPassword()));
+    private void login() {
+
+        if (user.equals(jTextField1.getText()) && new String(jPasswordField1.getPassword()).equals(key)) {
+            JanelaPrivada janelaPrivada = new JanelaPrivada();
+            janelaPrivada.setVisible(true);
+//            janelaPrivada.dispose();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Nome: " + jTextField1.getText()
+                    + "\nSenha: " + new String(jPasswordField1.getPassword())
+                    + "\nUsuário ou senha incorretos!", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
